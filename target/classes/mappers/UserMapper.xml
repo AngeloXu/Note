@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"      
+ "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="cn.tedu.note.dao.UserDao">
+	<insert id="saveUser" parameterType="cn.tedu.note.entity.User">
+		insert into cn_user
+			(cn_user_id, 
+			cn_user_name,
+			cn_user_password,
+			cn_user_token,
+			cn_user_nick)
+		values
+			(#{id}, #{name}, #{password},
+			#{token}, #{nick})		
+	</insert>
+	<select id="findUserById" parameterType="string" resultType="cn.tedu.note.entity.User">
+		select 
+			cn_user_id as id,<!-- setId -->
+			cn_user_name as name,
+			cn_user_password as password,
+			cn_user_token as token,
+			cn_user_nick as nick
+		from
+		cn_user
+		where cn_user_id=#{id}
+	</select>
+	<select id="findUserByName" parameterType="string" resultType="cn.tedu.note.entity.User">
+		select 
+			cn_user_id as id,
+			cn_user_name as name,
+			cn_user_password as password,
+			cn_user_token as token,
+			cn_user_nick as nick
+		from
+		cn_user
+		where cn_user_name=#{name}
+	</select>
+	<!-- <select id="updateUser" parameterType="cn.tedu.note.entity.User">
+		update cn_user set cn_user_name=#{name},cn_user_password=#{password},cn_user_token=#{token},cn_user_nick=#{nick}
+		where cn_user_id=#{id}
+	</select> -->
+	<update id="updateUser" parameterType="map">
+		update cn_user
+		set  
+			<trim suffixOverrides=",">
+				<if test="token!=null">
+					cn_user_token=#{token},
+				</if>
+				<if test="password!=null">
+					cn_user_password=#{password},
+				</if>
+				<if test="nick!=null">
+					cn_user_nick=#{nick}
+				</if>
+			</trim>
+		where cn_user_id=#{id}
+	</update>
+</mapper>
