@@ -1,5 +1,6 @@
 package cn.tedu.test;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +97,8 @@ public class NoteTestCase {
 		String title="hello";
 		String body="Java";
 		long now=System.currentTimeMillis();
-		Note note=new Note(id,notebookId,userId,statusId,typeId,title,body,now,now);
+		Timestamp time=new Timestamp(now);
+		Note note=new Note(id,notebookId,userId,statusId,typeId,title,body,time,time);
 		int n=dao.addNote(note);
 		System.out.println(n);
 	}

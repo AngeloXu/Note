@@ -23,6 +23,7 @@ $(function(){
 	$('#add_note').click(showAddNoteDialog);
 	$('#can').on('click','.close,.cancle',closeDialog);
 	$('#notes').on('click','.btn_slide_down',showNoteMenu);
+	$('#add_notebook').click(showCreateNotebookAction);
 });
 
 function showNoteMenu(){

@@ -6,10 +6,10 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.tedu.note.entity.Notebook;
 import cn.tedu.note.service.NotebookService;
 import cn.tedu.note.util.JsonResult;
 
@@ -44,4 +44,14 @@ public class NotebookController extends AbstractController{
 		List<Map<String,Object>> list=notebookService.listNotebooks(userId,page,size);
 		return new JsonResult<List<Map<String,Object>>>(list);
 	}
+	
+	@RequestMapping("/create.do")
+	@ResponseBody
+	public JsonResult<Notebook> createNotebook(String userId,String notebookName,String desc){
+	    System.out.println("创建notebook!,userId:"+userId+",bookname:"+notebookName);
+	    Notebook notebook=notebookService.createNotebook(userId, notebookName, desc);
+	    return new JsonResult<Notebook>();
+	}
+	
+	
 }

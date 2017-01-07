@@ -1,5 +1,6 @@
 package cn.tedu.note.service;
 
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,7 +97,7 @@ public class NoteServiceImpl implements NoteService{
 		String statusId="0";
 		String typeId="0";
 		String body="";
-		long time=System.currentTimeMillis();
+		Timestamp time=new Timestamp(System.currentTimeMillis());
 		Note note=new Note(id,notebookId,userId,statusId,typeId,title,body,time,time);
 		int n=noteDao.addNote(note);
 		if(n!=1){

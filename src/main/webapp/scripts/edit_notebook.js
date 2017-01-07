@@ -50,3 +50,30 @@ model.updateNotebooks=function(list,page){
 	li.data('page',page+1);
 	ul.append(li);
 };
+//创建笔记本对话框
+function showCreateNotebookAction(){
+	$('#can').load('alert/alert_notebook.html',function(){
+		$('#can .sure').click(createNotebook);
+	});
+	$('#opacity_bg').show();
+}
+//处理点击创建笔记本按钮事件
+function createNotebook(){
+	var url='notebook/create.do';
+	var notebookName=$('#can #input_notebook_name').val();
+	if(notebookName.replace(' ','')==''){
+		return;
+	}
+	var desc=$('#can #input_notebook_desc').val();
+	var data={userId:getCookie('userId'),notebookName:notebookName,desc:desc};
+	$.post(url,data,function(result){
+		if(result.state==SUCCESS){
+			var notebook=result.data;
+			model.updateNotebooks();
+		}
+		
+		
+	});
+	
+	
+}

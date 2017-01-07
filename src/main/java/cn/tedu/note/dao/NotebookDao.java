@@ -18,5 +18,7 @@ public interface NotebookDao {
 	 * @return List<Map>
 	 */
 	List<Map<String,Object>> findNotebooksByPage(Map<String,Object> params);
+	int createNotebook(Notebook notebook);
+	
 	
 }

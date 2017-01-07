@@ -115,7 +115,7 @@ function saveNoteAction(){
 	}
 	var url='note/save.do';
 	var data={id:id,title:title,body:body};
-	console.log(data);
+	console.log(data); 
 	$.post(url,data,function(result){
 		if(result.state==SUCCESS){
 			if(result.data==false){
