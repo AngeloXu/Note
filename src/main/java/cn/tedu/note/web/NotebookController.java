@@ -42,15 +42,16 @@ public class NotebookController extends AbstractController{
 		int size=6;
 		System.out.println(userId);
 		List<Map<String,Object>> list=notebookService.listNotebooks(userId,page,size);
+		System.out.println("NotebooksList"+list);
 		return new JsonResult<List<Map<String,Object>>>(list);
 	}
 	
 	@RequestMapping("/create.do")
 	@ResponseBody
 	public JsonResult<Notebook> createNotebook(String userId,String notebookName,String desc){
-	    System.out.println("创建notebook!,userId:"+userId+",bookname:"+notebookName);
 	    Notebook notebook=notebookService.createNotebook(userId, notebookName, desc);
-	    return new JsonResult<Notebook>();
+	    System.out.println("notebook:"+notebook);
+	    return new JsonResult<Notebook>(notebook);
 	}
 	
 	

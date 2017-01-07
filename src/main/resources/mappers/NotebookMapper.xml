@@ -7,12 +7,14 @@
 	
 	<select id="findNotebooksByUserId" resultType="map" parameterType="string">
 		select
-		 cn_notebook_id as "id",
-		 cn_notebook_name as "name"
+		      cn_notebook_id as "id",
+		      cn_notebook_name as "name"
 		from 
-		 cn_notebook
+		      cn_notebook
 		where
-		 cn_user_id=#{userId}
+		      cn_user_id=#{userId}
+		 order by
+		      cn_notebook_name asc
 	</select>
 	<select id="findNotebookById" parameterType="string" resultType="cn.tedu.note.entity.Notebook">
 		select

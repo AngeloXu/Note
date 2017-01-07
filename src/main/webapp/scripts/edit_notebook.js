@@ -29,13 +29,12 @@ model.updateNotebooks=function(list,page){
 	var template='<li class="online notebook">'+
 					'<a>'+
 						'<i class="fa fa-book" title="online" ></i>'+
-							'[notebook.name]</a></li>';
+							'notebook.name</a></li>';
 	if(!this.notebooks){
 		this.notebooks=list;
-	}else{
+	}else if(list){
 		this.notebooks=this.notebooks.concat(list);
 	}
-	
 	//console.log(this);
 	var ul=$("#notebooks").empty();
 	for(var i=0;i<this.notebooks.length;i++){
@@ -69,11 +68,19 @@ function createNotebook(){
 	$.post(url,data,function(result){
 		if(result.state==SUCCESS){
 			var notebook=result.data;
-			model.updateNotebooks();
+			model.updateNotebook(notebook,true);
+			closeDialog();
 		}
-		
-		
 	});
 	
 	
+}
+//更新前端笔记本数组
+model.updateNotebook=function(notebook,newNotebook){
+	this.notebook=notebook;
+	if(newNotebook){
+		this.notebookIndex=0;
+		this.notebooks.unshift({id:notebook.id,name:notebook.name});
+		this.updateNotebooks();
+	}
 }

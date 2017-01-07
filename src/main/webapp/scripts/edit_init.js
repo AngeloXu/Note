@@ -30,8 +30,7 @@ function showNoteMenu(){
 	console.log('showNoteMenu');
 	$('#notes .note_menu').hide();
 	$(this).parent().next().toggle();
-	
-	
+
 }
 
 function closeDialog(){

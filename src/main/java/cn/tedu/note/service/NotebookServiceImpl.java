@@ -34,8 +34,9 @@ public class NotebookServiceImpl implements NotebookService {
 		if(user==null){
 			throw new UserNotFoundException("查无此人");
 		}
-		System.out.println(userId);
-		return notebookDao.findNotebooksByUserId(userId);
+		List<Map<String, Object>> list=notebookDao.findNotebooksByUserId(userId);
+		System.out.println(list);
+		return list;
 	}
 	
 	//事务的传播特性

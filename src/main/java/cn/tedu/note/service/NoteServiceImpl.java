@@ -69,7 +69,7 @@ public class NoteServiceImpl implements NoteService{
 		}
 		note.put("body", body);
 		note.put("id", id);
-		note.put("lastModifyTime",System.currentTimeMillis());
+		note.put("lastModifyTime",new Timestamp(System.currentTimeMillis()));
 		int n=noteDao.updateNote(note);
 		return n==1;
 	}
