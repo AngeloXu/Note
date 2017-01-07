@@ -27,10 +27,10 @@ $(function(){
 });
 
 function showNoteMenu(){
-	console.log('showNoteMenu');
-	$('#notes .note_menu').hide();
+	//	console.log('showNoteMenu');
+	//$('#notes .note_menu').hide();
+	$(this).parents('.online').siblings().find('.note_menu').hide();
 	$(this).parent().next().toggle();
-
 }
 
 function closeDialog(){

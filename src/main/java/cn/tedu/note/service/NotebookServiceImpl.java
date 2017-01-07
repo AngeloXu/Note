@@ -49,7 +49,7 @@ public class NotebookServiceImpl implements NotebookService {
 		}
 	/*	String s=null;
 		s.length();*/
-		notebookDao.deleteNotebook(id);		
+		notebookDao.deleteNotebook(id);	
 	}
 
 	public List<Map<String, Object>> listNotebooks(String userId, int pageNum, int pageSize)
